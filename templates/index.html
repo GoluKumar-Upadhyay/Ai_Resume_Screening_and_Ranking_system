@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analyzer</title>
+    <style>
+        body {
+            background-color: #0d0b2b;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        h2, p {
+            text-align: center;
+            color: #00ff99;
+        }
+        form {
+            text-align: center;
+        }
+        textarea {
+            width: 90%;
+            margin-left: 5%;
+            background-color: #1a1a40;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .container {
+            margin: auto;
+            width: 60%;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #00cc66;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎯 Resume Ranking and Screening System</h2>
+        <p>AI-Powered Resume Analysis with 98% Accuracy</p><br>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label>Upload Resume (PDF):</label><br><br>
+            <input type="file" name="resume" required><br><br>
+
+            <label style="color: red;">Paste Job Description:</label><br><br>
+            <textarea name="job" rows="10" required placeholder="Paste job description here..."></textarea><br>
+
+            <input type="submit" value="🧠 Analyze Resume">
+        </form>
+
+        {% if category %}
+        <h3>📌 Predicted Category: {{ category }}</h3>
+        <h3>🎯 Match Score: {{ score | round(2) }}%</h3>
+        <h3>🧠 Extracted Skills:</h3>
+        <p>{{ skill | join(', ') }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
